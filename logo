@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HensbergRP Logo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #0a0a0a;
+            position: relative;
+            font-family: 'Arial', sans-serif;
+            flex-direction: column;
+            gap: 50px;
+            overflow: hidden;
+        }
+
+        /* Animierter Hintergrund-Gradient */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(138, 56, 236, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(58, 134, 255, 0.05) 0%, transparent 50%);
+            animation: backgroundShift 15s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        /* Hauptlogo Container */
+        .logo-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Animierter Hintergrund */
+        .logo-bg {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+            opacity: 0.15;
+            filter: blur(60px);
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Logo Text Hauptstil */
+        .logo-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .logo-main {
+            font-size: 60px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 10px;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)); }
+            to { filter: drop-shadow(0 0 30px rgba(138, 56, 236, 1)); }
+        }
+
+        .logo-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Server Info */
+        .server-info {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 50px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.02);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .server-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .server-info p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .server-info .link {
+            color: #8af3ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: rgba(138, 243, 255, 0.1);
+        }
+
+        .server-info .link:hover {
+            background: rgba(138, 243, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(138, 243, 255, 0.5);
+        }
+
+        /* Partikel Effekte */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: particleFloat 10s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100%) translateX(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100%) translateX(100px);
+            }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 8s; }
+        .particle:nth-child(10) { left: 95%; animation-delay: 9s; }
+
+        /* Export Hinweis */
+        .export-note {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            max-width: 300px;
+        }
+
+        /* Neon Glow Effekt für RP - Schärfer */
+        .rp-glow {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff006e, #ff4584, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: 2px;
+            filter: drop-shadow(0 0 8px rgba(255, 0, 110, 0.6));
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from {
+                filter: drop-shadow(0 0 8px rgba(255, 0, 110, 0.6));
+            }
+            to {
+                filter: drop-shadow(0 0 12px rgba(255, 0, 110, 0.9));
+            }
+        }
+
+        /* Responsives Design */
+        @media (max-width: 600px) {
+            .logo-container {
+                width: 300px;
+                height: 300px;
+            }
+            .logo-main {
+                font-size: 45px;
+            }
+            .server-info {
+                padding: 20px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hauptlogo -->
+    <div class="logo-container">
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="logo-bg"></div>
+        <div class="logo-text">
+            <div class="logo-main">Hensberg<span class="rp-glow">RP</span></div>
+            <div class="logo-subtitle">Roleplay</div>
+        </div>
+    </div>
+
+    <!-- Server Informationen -->
+    <div class="server-info">
+        <h3>🎮 Join Our Community</h3>
+        <p>
+            <strong>Discord:</strong> 
+            <a href="https://discord.gg/hensbergrp" class="link" target="_blank">discord.gg/hensbergrp</a>
+        </p>
+        <p>
+            <strong>TeamSpeak:</strong> 
+            <span class="link">hensbergrp.de</span>
+        </p>
+    </div>
+
+    <!-- Export Hinweis -->
+    <div class="export-note">
+        💡 <strong>Tipp:</strong> Um das Logo als PNG zu exportieren, mache einen Screenshot oder nutze ein Browser-Extension wie "Full Page Screen Capture". Für GIF-Animation kannst du Screen-Recording-Tools verwenden.
+    </div>
+</body>
+</html>
